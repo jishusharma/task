@@ -11,4 +11,4 @@ System.setProperty("webdriver.chrome.driver", "D:\\tools\\chromedriver_win32\\ch
 mvn clean test surefire-report:report
 
 # Note: 
-Html test report will be generated in the inside folder \\target\site
+Html test report will be generated inside the folder \\target\site
