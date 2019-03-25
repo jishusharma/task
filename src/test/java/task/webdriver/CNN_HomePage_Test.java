@@ -6,12 +6,11 @@ import org.openqa.selenium.WebDriver;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CNN_HomePage_Test extends BaseTest {
-    static CNN_HomePage cNN_HomePage;
+    private static CNN_HomePage cNN_HomePage;
 
     @BeforeClass
     public static void init(){
-        WebDriver dr = getDriver();
-        cNN_HomePage = new CNN_HomePage(dr);
+        cNN_HomePage = new CNN_HomePage(getDriver());
     }
 
     @Test

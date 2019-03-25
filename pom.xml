@@ -7,7 +7,9 @@
     <groupId>nflTestTask</groupId>
     <artifactId>nflTestTask</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+	<properties>
+		<webdriver.chrome>D:\project\task\chromedriver.exe</webdriver.chrome>
+	</properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -20,23 +22,23 @@
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.18.1</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
-
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<systemPropertyVariables>
+						<webdriver.chrome.driver>${webdriver.chrome}</webdriver.chrome.driver>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+    </build>
 </project>

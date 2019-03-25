@@ -5,6 +5,8 @@ import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.ChromeDriverService;
+
 
 
 public class BaseTest {
@@ -13,8 +15,14 @@ public class BaseTest {
 
     @BeforeClass
     public static void before() {
-        System.setProperty("webdriver.chrome.driver", "D:\\tools\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
+		final ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.setHeadless(true);
+		chromeOptions.addArguments("window-size=1600,1200");
+		final ChromeDriverService service = new ChromeDriverService.Builder()
+            .usingAnyFreePort()
+            .build();
+
+        driver = new ChromeDriver(service,chromeOptions);
         driver.manage().window().fullscreen();
     }
 
@@ -27,7 +35,7 @@ public class BaseTest {
         }
     }
 
-    public static WebDriver getDriver() {
+    static WebDriver getDriver() {
         return driver;
     }
 }
