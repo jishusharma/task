@@ -8,6 +8,6 @@ Java must be installed in your system
         mvn clean test surefire-report:report
 
 ##### Note: 
-1. Html "surefire-report" will be generated inside the folder \\task\target\site
-2. Currently the chrome driver is running in 'headless' mode. 
-   We can see the browser action by setting this "chromeOptions.setHeadless(false);" in the BaseTest.java file
+    1. Html "surefire-report" will be generated inside the folder \\task\target\site
+    2. Currently the chrome driver is running in 'headless' mode. 
+       We can see the browser action by setting this "chromeOptions.setHeadless(false);" in the BaseTest.java file
