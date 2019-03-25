@@ -1,5 +1,5 @@
-## Prerequisites 
-Java must be installed in your system
+## Prerequisites
+    Java must be installed in your system
 
 ## Steps
     1. Download or clone the project
