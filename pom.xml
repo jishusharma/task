@@ -8,7 +8,7 @@
     <artifactId>nflTestTask</artifactId>
     <version>1.0-SNAPSHOT</version>
 	<properties>
-		<webdriver.chrome>D:\project\task\chromedriver.exe</webdriver.chrome>
+		<webdriver.chrome>chromedriver.exe</webdriver.chrome>
 	</properties>
     <dependencies>
         <dependency>
