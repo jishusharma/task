@@ -1,12 +1,10 @@
 package task.webdriver;
 
-
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriverService;
-
 
 
 public class BaseTest {
@@ -16,12 +14,11 @@ public class BaseTest {
     @BeforeClass
     public static void before() {
 		final ChromeOptions chromeOptions = new ChromeOptions();
-		chromeOptions.setHeadless(true);
+		chromeOptions.setHeadless(false);
 		chromeOptions.addArguments("window-size=1600,1200");
 		final ChromeDriverService service = new ChromeDriverService.Builder()
             .usingAnyFreePort()
             .build();
-
         driver = new ChromeDriver(service,chromeOptions);
         driver.manage().window().fullscreen();
     }
@@ -38,4 +35,5 @@ public class BaseTest {
     static WebDriver getDriver() {
         return driver;
     }
+
 }

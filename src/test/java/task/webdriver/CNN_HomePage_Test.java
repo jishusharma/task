@@ -2,7 +2,6 @@ package task.webdriver;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.WebDriver;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CNN_HomePage_Test extends BaseTest {
@@ -14,22 +13,22 @@ public class CNN_HomePage_Test extends BaseTest {
     }
 
     @Test
-    public void a_homepageTests() {
+    public void a_homepage_Title_Check_Test() {
         cNN_HomePage.goToHome();
         Assert.assertEquals("Title check failed!", "CNN International - Breaking News, US News, World News and Video", getDriver().getTitle());
     }
 
     @Test
-    public void b_resultTests_success() {
+    public void b_results_Displayed_With_Valid_Keyword() {
         String searchFor =  "NFL";
         cNN_HomePage.enterAndSearch(searchFor);
-        Assert.assertTrue("At least something must be found for  " + searchFor ,cNN_HomePage.searchResultsDisplayed());
+        Assert.assertTrue("At least something must be found for  " + searchFor ,cNN_HomePage.searchResultsDisplayed(searchFor));
     }
 
     @Test
-    public void c_resultTests_fail() {
+    public void c_required_Text_Displayed_With_Invalid_Keyword() {
         String searchFor =  "NFLFake";
         cNN_HomePage.enterAndSearch(searchFor);
-        Assert.assertFalse("Nothing must be found for " + searchFor,cNN_HomePage.searchResultsDisplayed());
+        Assert.assertTrue("Nothing must be found for " + searchFor,cNN_HomePage.searchResultIsEmpty(searchFor));
     }
 }

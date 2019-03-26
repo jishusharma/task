@@ -15,11 +15,14 @@ public class CNN_HomePage extends BasePage {
     @FindBy(xpath = "/html//button[@id='submit-button']")
     private WebElement searchButton;
 
-    @FindBy(className = "cnn-search__results-count")
+    @FindBy(xpath = "/html/body/div[7]/div[@class='pg-no-rail pg-wrapper']//div[@class='cnn-search__results-count']")
     private WebElement searchCount;
 
+    @FindBy(xpath = "/html/body/div[7]/div[@class='pg-no-rail pg-wrapper']/div[@class='cnn-search cnn-search--no-results']//h3")
+    private WebElement searchResultIsEmpty;
 
-    public CNN_HomePage(WebDriver driver) {
+
+    CNN_HomePage(WebDriver driver) {
         super(driver);
     }
 
@@ -34,13 +37,19 @@ public class CNN_HomePage extends BasePage {
         searchButton.click();
     }
 
-    public boolean searchResultsDisplayed(){
-        if (searchCount.isDisplayed()){
-            searchCount.getText().contains("Displaying results");
-            return true;
+    public boolean searchResultsDisplayed(String searchText){
+        return searchCount.isDisplayed()
+                && searchCount.getText().startsWith("Displaying results")
+                && searchCount.getText().endsWith(searchText);
+    }
+
+    public boolean searchResultIsEmpty(String searchText){
+        try {
+            return searchResultIsEmpty.isDisplayed()
+                    && searchResultIsEmpty.getText().contains("Your search for " + searchText + " did not match any documents.");
+        }catch (org.openqa.selenium.NoSuchElementException e){
+
         }
-        else {
-            return false;
-        }
+        return false;
     }
 }
