@@ -14,7 +14,7 @@ public class BaseTest {
     @BeforeClass
     public static void before() {
 		final ChromeOptions chromeOptions = new ChromeOptions();
-		chromeOptions.setHeadless(false);
+		chromeOptions.setHeadless(true);
 		chromeOptions.addArguments("window-size=1600,1200");
 		final ChromeDriverService service = new ChromeDriverService.Builder()
             .usingAnyFreePort()
